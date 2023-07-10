@@ -12,8 +12,8 @@
 	<groupId>com.clandaith</groupId>
 	<artifactId>wawsa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>WAW SA</name>
-	<description>WAW SA</description>
+	<name>WAW Solo Assistant</name>
+	<description>WAW Solo Assistant</description>
 
 	<dependencies>
 		<dependency>
