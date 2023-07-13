@@ -11,7 +11,7 @@ public class CardController {
 	@Autowired
 	CardService cardService;
 
-	@GetMapping("/card")
+	@GetMapping("/api/card")
 	public Card card(@RequestParam(value = "saType", defaultValue = "") String saType) {
 		return cardService.getCard(saType);
 	}
