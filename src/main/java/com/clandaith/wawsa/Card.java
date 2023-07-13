@@ -1,5 +1,7 @@
 package com.clandaith.wawsa;
 
+import org.apache.commons.csv.CSVRecord;
+
 public class Card {
 
 	private final int id;
@@ -20,25 +22,24 @@ public class Card {
 
 	private final int reshuffle;
 
-	public Card(int id, int die1, int die2, String p1, String p2, String p3, String s1, String s2, String s3, String s4,
-			String type, String reshuffle) {
-		this.id = id;
+	public Card(CSVRecord cardRecord) {
+		this.id = Integer.parseInt(cardRecord.get(0));
 
-		this.die1 = die1;
-		this.die2 = die2;
+		this.die1 = Integer.parseInt(cardRecord.get(1));
+		this.die2 = Integer.parseInt(cardRecord.get(2));
 
-		this.primary1 = p1;
-		this.primary2 = p2;
-		this.primary3 = p3;
+		this.primary1 = cardRecord.get(3);
+		this.primary2 = cardRecord.get(4);
+		this.primary3 = cardRecord.get(5);
 
-		this.secondary1 = s1;
-		this.secondary2 = s2;
-		this.secondary3 = s3;
-		this.secondary4 = s4;
+		this.secondary1 = cardRecord.get(6);
+		this.secondary2 = cardRecord.get(7);
+		this.secondary3 = cardRecord.get(8);
+		this.secondary4 = cardRecord.get(9);
 
-		this.type = type;
+		this.type = cardRecord.get(10);
 
-		this.reshuffle = reshuffle.isEmpty() ? 0 : Integer.parseInt(reshuffle);
+		this.reshuffle = cardRecord.get(11).isEmpty() ? 0 : Integer.parseInt(cardRecord.get(11));
 	}
 
 	public int getId() {

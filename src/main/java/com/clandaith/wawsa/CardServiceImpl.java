@@ -43,10 +43,8 @@ public class CardServiceImpl implements CardService {
 
 		try (Reader reader = Files.newBufferedReader(file.toPath())) {
 			Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(reader);
-			for (CSVRecord record : records) {
-				Card card = new Card(Integer.parseInt(record.get(0)), Integer.parseInt(record.get(1)),
-						Integer.parseInt(record.get(2)), record.get(3), record.get(4), record.get(5), record.get(6),
-						record.get(7), record.get(8), record.get(9), record.get(10), record.get(11));
+			for (CSVRecord cardRecord : records) {
+				Card card = new Card(cardRecord);
 				allCards.add(card);
 				availableCards.add(card);
 			}
