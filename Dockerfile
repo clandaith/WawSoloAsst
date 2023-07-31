@@ -5,7 +5,7 @@ COPY . /usr/src/java-code/
 RUN mvn package
 
 WORKDIR /usr/src/java-app
-RUN cp /usr/src/java-code/target/*.jar ./waw-be.jar
+RUN mv /usr/src/java-code/target/*.jar ./waw-be.jar
 
 RUN rm -rf /usr/src/java-code
 
