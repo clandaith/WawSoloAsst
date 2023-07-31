@@ -1,0 +1,14 @@
+version: '2.2'
+services:
+  WaW_be:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: waw_be
+    ports:
+      - 8081:8080
+    networks:
+      - network1
+
+networks:
+  network1:
