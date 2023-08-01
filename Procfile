@@ -1,1 +1,1 @@
-web: java -jar target/wawsa-0.9.jar
+web: java -Dserver.port=$PORT -jar target/wawsa-0.9.jar
