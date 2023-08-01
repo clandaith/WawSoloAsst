@@ -1,0 +1,1 @@
+web: java -jar target/wawsa-0.9.jar
