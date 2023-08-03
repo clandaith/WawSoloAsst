@@ -13,7 +13,7 @@ public class CardController {
 	CardService cardService;
 
 	@CrossOrigin
-	@GetMapping("/api/card")
+	@GetMapping("/card")
 	public Card card(@RequestParam(value = "saType", defaultValue = "") String saType) {
 		return cardService.getCard(saType);
 	}
