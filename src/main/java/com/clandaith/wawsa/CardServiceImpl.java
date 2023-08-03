@@ -1,10 +1,10 @@
 package com.clandaith.wawsa;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,8 +14,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ResourceUtils;
 
 @Service
 public class CardServiceImpl implements CardService {
@@ -31,17 +31,12 @@ public class CardServiceImpl implements CardService {
 	public CardServiceImpl() {
 		LOGGER.info("Starting up....");
 
-		try {
-			parseFile();
-		} catch (FileNotFoundException e) {
-			LOGGER.error("", e);
-		}
+		parseFile();
 	}
 
-	private void parseFile() throws FileNotFoundException {
-		File file = ResourceUtils.getFile("classpath:cards.csv");
-
-		try (Reader reader = Files.newBufferedReader(file.toPath())) {
+	private void parseFile() {
+		try (Reader reader = new BufferedReader(
+				new InputStreamReader(new ClassPathResource("cards.csv").getInputStream(), StandardCharsets.UTF_8))) {
 			Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(reader);
 			for (CSVRecord cardRecord : records) {
 				Card card = new Card(cardRecord);
